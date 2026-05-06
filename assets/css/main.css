@@ -3094,16 +3094,20 @@
 }
 
 /* Sparkle background effect */
-body.sparkle-bg::before,
-body.sparkle-bg::after {
+body.sparkle-bg .sparkle-layer,
+body.sparkle-bg .sparkle-layer::before,
+body.sparkle-bg .sparkle-layer::after {
     content: "";
     position: fixed;
     inset: 0;
     pointer-events: none;
-    z-index: 0;
 }
 
-body.sparkle-bg::before {
+body.sparkle-bg .sparkle-layer {
+    z-index: 2;
+}
+
+body.sparkle-bg .sparkle-layer::before {
     background-image:
             radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.7) 0 2px, transparent 3px),
             radial-gradient(circle at 85% 30%, rgba(173, 216, 255, 0.65) 0 1.8px, transparent 3px),
@@ -3114,7 +3118,7 @@ body.sparkle-bg::before {
     animation: sparkleTwinkle 5s ease-in-out infinite alternate;
 }
 
-body.sparkle-bg::after {
+body.sparkle-bg .sparkle-layer::after {
     background: radial-gradient(circle at center, rgba(255, 255, 255, 0.2), transparent 60%);
     mix-blend-mode: screen;
     animation: sparklePulse 6s ease-in-out infinite;
