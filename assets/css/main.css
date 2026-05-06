@@ -3092,3 +3092,59 @@
 .speaker {
 	margin-bottom: 20px;
 }
+
+/* Sparkle background effect */
+body.sparkle-bg::before,
+body.sparkle-bg::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+body.sparkle-bg::before {
+    background-image:
+            radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.7) 0 2px, transparent 3px),
+            radial-gradient(circle at 85% 30%, rgba(173, 216, 255, 0.65) 0 1.8px, transparent 3px),
+            radial-gradient(circle at 30% 70%, rgba(255, 240, 190, 0.65) 0 2px, transparent 3px),
+            radial-gradient(circle at 70% 80%, rgba(255, 255, 255, 0.75) 0 2px, transparent 3px),
+            radial-gradient(circle at 50% 50%, rgba(220, 245, 255, 0.7) 0 2.2px, transparent 3px);
+    background-size: 220px 220px, 260px 260px, 240px 240px, 280px 280px, 300px 300px;
+    animation: sparkleTwinkle 5s ease-in-out infinite alternate;
+}
+
+body.sparkle-bg::after {
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.2), transparent 60%);
+    mix-blend-mode: screen;
+    animation: sparklePulse 6s ease-in-out infinite;
+}
+
+body.sparkle-bg #wrapper,
+body.sparkle-bg #header {
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes sparkleTwinkle {
+    0% {
+        opacity: 0.35;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.7;
+    }
+    100% {
+        opacity: 0.45;
+        transform: scale(1.03);
+    }
+}
+
+@keyframes sparklePulse {
+    0%, 100% {
+        opacity: 0.15;
+    }
+    50% {
+        opacity: 0.35;
+    }
+}
